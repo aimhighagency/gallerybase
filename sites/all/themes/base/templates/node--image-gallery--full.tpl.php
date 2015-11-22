@@ -20,3 +20,7 @@
 		<div class="icon-arrow-right item-next"></div>
 	</div>
 </div>
+
+<div class="thumbs">
+	<?php echo $images; ?>
+</div>

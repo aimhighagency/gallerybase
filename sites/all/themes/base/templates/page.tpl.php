@@ -1,20 +1,37 @@
 
 <header id="header-main">
-	<div id="inner">
-		<div id="logo"><a href="/">LOGO HERE</a></div>
+	<div class="inner">
+		<div id="logo"><a href="/">MJ Kim</a></div>
 		
-		<nav id="nav-main">
-			<div id="inner">
-				<?php print render($page['nav_main']); ?>
-				<div class="social-icons">
-					<a href="http://twitter.com/" class="icon-twitter" target="_blank"></a>
-					<a href="http://instagram.com/" class="icon-instagram" target="_blank"></a>
-					<a href="http://pinterest" class="icon-pinterest" target="_blank"></a>
-				</div> <!-- END .social-icons -->
-			</div>
-		</nav> <!-- END #nav -->
+		<div id="nav-holder">
+			<nav id="nav-main">
+				<div class="inner">
+					<?php print render($page['nav_main']); ?>
+				</div>
+				<footer>
+					<div class="contact">
+						<div class="email"><a href="mailto:studio@mjkimpictures.com">studio@mjkimpictures.com</a></div>
+						<div class="phone">(323) 123-4567</div>
+						<div class="social-icons">
+							<a href="http://twitter.com/" class="icon-twitter" target="_blank"></a>
+							<a href="http://instagram.com/" class="icon-instagram" target="_blank"></a>
+							<a href="http://pinterest" class="icon-pinterest" target="_blank"></a>
+						</div>		
+					</div>
 
-		<div class="menu-toggle icon-list"></div>
+					<div class="copy">
+						&copy; <?php echo date('Y'); ?> MJ Kim Pictures &mdash; Don't Steel. It's not nice.
+					</div>
+				</footer>
+				<div class="bg"></div>
+			</nav>
+		</div><!-- END #nav -->
+
+		<div class="menu-toggle">
+			<div class="icon-menu"></div>
+			<div class="icon-cross"></div>
+		</div>
+
 	</div>
 </header>  <!-- END header -->
 
@@ -28,9 +45,7 @@
 			<div id="tabs"><?php echo render($tabs); ?></div>
 		<?php endif; ?>
 
-		<?php if(isset($title)): ?>
-			<h1 id="page-title"><?php echo $title; ?></h1>
-		<?php endif; ?>
+		
 
 		<div id="content">
 			<?php print render($page['content']); ?>
@@ -39,13 +54,17 @@
 </div>
 
 <footer id="footer-main">
-	<div class="inner">
-		<div class="footer-left"><?php print render($page['footer_left']); ?></div>
-		<div class="footer-main"><?php print render($page['footer_main']); ?></div>
-		<div class="footer-right"><?php print render($page['footer_right']); ?></div>		
+	<div class="contact">
+		<div class="email"><a href="mailto:studio@mjkimpictures.com">studio@mjkimpictures.com</a></div>
+		<div class="phone">(323) 123-4567</div>
+		<div class="social-icons">
+			<a href="http://twitter.com/" class="icon-twitter" target="_blank"></a>
+			<a href="http://instagram.com/" class="icon-instagram" target="_blank"></a>
+			<a href="http://pinterest" class="icon-pinterest" target="_blank"></a>
+		</div>		
 	</div>
 
 	<div class="copy">
-		&copy; <?php echo date('Y') . ' ' . $site_name; ?>
+		&copy; <?php echo date('Y'); ?> MJ Kim Pictures &mdash; Don't Steel. It's not nice.
 	</div>
 </footer>

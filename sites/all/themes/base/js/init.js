@@ -5,30 +5,44 @@ Drupal.behaviors.init = {
  			
 			// MENU TWEAKS!!!
  			//===================================
+ 			var 	nav = $('#nav-holder').hide(),
+ 					menu_icon = $('.menu-toggle .icon-menu'),
+ 					close_icon = $('.menu-toggle .icon-cross'),
+ 					nav_vis = false,
+ 					logo = jQuery('#logo'),
+ 					body = jQuery('body');
+
  			$('.menu-toggle').click(function(){
-				$('#nav-main').slideToggle(300);
+				navToggle();
 				return false;
 			});
 
+			function navToggle(){
+				if(nav_vis){
+					nav_vis = false;
+					navHide();
+				}else{
+					nav_vis = true;
+					navShow();
+				}
+			}
 
- 			// MASONRY!!!
- 			//===================================
-			// var masonry_container = $('.node-image-gallery .field-name-field-other-images');
-			
-			// masonry_container.imagesLoaded(function(){
-			// 	masonry_container.masonry({
-			// 	  itemSelector: '.field-item'
-			// 	});
-			// });
+			function navShow(){
+				nav.fadeIn();
+				menu_icon.fadeOut();
+				close_icon.fadeIn();
+				logo.fadeIn()
+			}
 
+			function navHide(){
+				nav.fadeOut();
+				close_icon.fadeOut();
+				menu_icon.fadeIn();
 
-			// SKROLR!!!
- 			//===================================
-			// if($(window).width() > 500){
-	 		//		var s = skrollr.init({
-	 		// 		forceHeight: false,
-	 		// 	});
-	 		// }
+				if(!body.hasClass('show_thumbs')){
+					logo.fadeOut();
+				}
+			}
 
 
 		}(jQuery));

@@ -4,14 +4,15 @@ $main_width:      1200px;
 $body_pad:			20px;
 $gutter:				20px;
 $header_height:	50px;
+$gallery_width: 	700px;
 
 $bp_lg:           1400px;
 $bp_med:          1080px;
 $bp_sm:           700px;
 
 /*  COLORS  */
-$color_main:         #000;                 
-$color_accent:       #666;              
+$color_main:         #2d2d2d;                 
+$color_accent:       #3fdbd2;              
 $color_main_lt:      #999;
 $color_error:        #b54747;
 $color_warning:      #f0da72;
@@ -22,9 +23,9 @@ $page_lt:            #405858;
 $page_dark:          #2b3232;
 
 /*  TYPOGROPHY */
-$font_main:					'LatoLight', sans-serif;
-$font_header:				'LatoBold', sans-serif;
-$font_fancy:        		'GaramondPremierProLightItalicDisplay', serif;
+$font_main:					'Lato', sans-serif;
+$font_header:				'Lato', sans-serif;
+$font_fancy:        		'Lato', sans-serif;
 
 $font_weight_lt:         100;
 $font_weight_reg:        400;

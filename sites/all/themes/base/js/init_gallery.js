@@ -3,6 +3,8 @@ Drupal.behaviors.init_gallery = {
 		if(!jQuery('body').hasClass('mobile')){
 			
 			var items =  jQuery('.gallery.full .images li');
+			var thumbs_items =  jQuery('.node-type-image-gallery .thumbs li');
+			var thumbs =  jQuery('.node-type-image-gallery .thumbs');
 			var total_items = items.length;
 			var current_item = 0;
 			var last_item = 0;
@@ -13,6 +15,9 @@ Drupal.behaviors.init_gallery = {
 			var win = jQuery(window);
 			var win_w = win.width();
 			var details = jQuery('.details-holder');
+			var footer = jQuery('#footer-main');
+			var logo = jQuery('#logo');
+			var body = jQuery('body');
 
 			var slide_show;
 
@@ -33,8 +38,12 @@ Drupal.behaviors.init_gallery = {
 			   var $this = jQuery(this)
 			   $this.addClass('item-' + index).hide();
 				$this.attr('rel', index);
+			});
 
-
+			thumbs_items.each(function(index) {
+			    var $this = jQuery(this)
+			    $this.addClass('thumb-' + index);
+				 $this.attr('rel', index);
 			});
 
 			jQuery('.image-group img').each(function(index) {
@@ -76,6 +85,7 @@ Drupal.behaviors.init_gallery = {
 			}
 
 			function selectItem(index){
+				console.log(index);
 				last_item = current_item;
 				current_item = index;
 
@@ -86,17 +96,14 @@ Drupal.behaviors.init_gallery = {
 			}
 
 			function fadeThumbs(){
-				gallery.fadeOut(300, function(){
-					gallery.addClass('is-not-thumb');
-					gallery.removeClass('is-thumb');
-					resizeStuff();
-					items.hide();
-					gallery.show();
-
-					jQuery(' .item-' + current_item).fadeIn(trans_speed);
+				footer.fadeOut(300);
+				logo.fadeOut(300);
+				fadeItems();
+				thumbs.fadeOut(300, function(){
+					gallery.fadeIn(300);
 					resizeStuff();
 					controls.fadeIn(300);
-					setClicks();
+					body.removeClass('show_thumbs');
 				});
 			}
 			
@@ -114,15 +121,15 @@ Drupal.behaviors.init_gallery = {
 			}
 			
 			function fadeImage(){
+				resizeStuff();
 				gallery.fadeOut(300, function(){
-					gallery.removeClass('is-not-thumb');
-					gallery.addClass('is-thumb');
-					items.removeAttr('style');
-					items.show();
-					gallery.fadeIn(300);
-					controls.fadeOut(300);
-					resizeStuff();
-					setClicks();
+					body.addClass('show_thumbs');
+					thumbs.fadeIn(300);
+					footer.fadeIn(300);
+					logo.fadeIn(300);
+					gallery_thumbs.masonry({
+					  itemSelector: 'li'
+					});
 					
 				});
 
@@ -140,24 +147,19 @@ Drupal.behaviors.init_gallery = {
 				return false;
 			});
 
-			function setClicks(){
-				jQuery('.gallery.full .images li').unbind('click');
-				if(gallery.hasClass('is-thumb')){
-					jQuery('.gallery.full.is-thumb .images li').click(function(){
-						var rel = jQuery(this).attr('rel');
-						selectItem(rel);
-						clearInterval(slide_show);
-						return false;
-					});
-				}else{
-					jQuery('.gallery.full.is-not-thumb .images li').click(function(){
-						nextItem();
-						clearInterval(slide_show);
-						return false;
-					});
+			jQuery('.node-type-image-gallery .thumbs li').click(function(){
+				var rel = jQuery(this).attr('rel');
+				selectItem(rel);
+				clearInterval(slide_show);
+				return false;
+			});
 
-				}
-			}
+			jQuery('.gallery.full.is-not-thumb .images li').click(function(){
+				nextItem();
+				clearInterval(slide_show);
+				return false;
+			});
+
 
 			jQuery(document).keydown(function(e) {
 			    switch(e.which) {
@@ -184,7 +186,7 @@ Drupal.behaviors.init_gallery = {
 			});
 
 			function setCount(){
-				var count = (current_item + 1) + ' / ' + total_items;
+				var count = Number(Number(current_item) + 1) + ' / ' + total_items;
 				jQuery('.image-count').text(count);
 			}
 
@@ -266,13 +268,28 @@ Drupal.behaviors.init_gallery = {
 			
 			
 			if(start_thumbs == 1){
-				fadeImage();
+				gallery.hide();
+				thumbs.fadeIn(300)
 				clearInterval(slide_show);
+			}else{
+				logo.hide();
+				footer.hide();
 			}
 
-			//resizeStuff();
-			setClicks();
+			resizeStuff();
 			setCount();
+
+
+
+			// MASONRY!!!
+ 			//===================================
+			var gallery_thumbs = jQuery('.node-type-image-gallery .thumbs ul');
+			
+			gallery_thumbs.imagesLoaded(function(){
+				gallery_thumbs.masonry({
+				  itemSelector: 'li'
+				});
+			});
 		}
 	}
 }
