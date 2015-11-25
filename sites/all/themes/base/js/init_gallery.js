@@ -283,12 +283,14 @@ Drupal.behaviors.init_gallery = {
 
 			// MASONRY!!!
  			//===================================
-			var gallery_thumbs = jQuery('.node-type-image-gallery .thumbs ul');
+			var gallery_thumbs = jQuery('.node-type-image-gallery .thumbs ul').hide();
 			
 			gallery_thumbs.imagesLoaded(function(){
+				gallery_thumbs.fadeIn();
 				gallery_thumbs.masonry({
 				  itemSelector: 'li'
 				});
+				
 			});
 		}
 	}
