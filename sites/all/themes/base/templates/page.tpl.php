@@ -65,7 +65,7 @@
 	</div>
 
 	<div class="copy">
-		&copy; <?php echo date('Y'); ?> MJ Kim Pictures &mdash; Don't Steel. It's not nice.
+		&copy; <?php echo date('Y'); ?> MJ Kim Pictures &mdash; Don't Steal. It's not nice.
 	</div>
 </footer>
 
