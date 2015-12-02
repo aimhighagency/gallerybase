@@ -290,7 +290,7 @@ Drupal.behaviors.init_gallery = {
 				gallery_thumbs.masonry({
 				  itemSelector: 'li'
 				});
-				
+				jQuery('#loader').fadeOut();
 			});
 		}
 	}

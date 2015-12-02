@@ -39,10 +39,14 @@ Drupal.behaviors.init = {
 				close_icon.fadeOut();
 				menu_icon.fadeIn();
 
-				if(!body.hasClass('show_thumbs')){
+				if(!body.hasClass('show_thumbs') && !body.hasClass('front')){
 					logo.fadeOut();
 				}
 			}
+
+			jQuery('body').imagesLoaded(function(){
+				jQuery('#loader').fadeOut();
+			});
 
 
 		}(jQuery));

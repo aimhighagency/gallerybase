@@ -68,3 +68,7 @@
 		&copy; <?php echo date('Y'); ?> MJ Kim Pictures &mdash; Don't Steel. It's not nice.
 	</div>
 </footer>
+
+<div id="loader">
+	<img src="/<?php echo path_to_theme(); ?>/images/loader.png" alt="">
+</div>

@@ -50,6 +50,22 @@ li a.active, li.opened span.nolink{color: #fff;}
 
 /* Layout
 -------------------------------------------------------------- */
+
+#loader{
+  position: fixed;
+  width: 100%;
+  top: 48vh;
+  left: 0;
+  text-align: center;
+  z-index: -1;
+}
+
+.front{
+  #loader{
+    //display: none;
+  }
+}
+
 #header-main{
   background-color: $page_bg;
   position: fixed;
@@ -104,6 +120,15 @@ li a.active, li.opened span.nolink{color: #fff;}
     }
   }
 
+  @media (max-height: 600px)  { 
+    
+    a{
+      font-size: 100px !important;
+      line-height: normal;
+      letter-spacing: 0;
+    }
+  }
+
 }
 
 #nav-holder{
@@ -151,13 +176,13 @@ li a.active, li.opened span.nolink{color: #fff;}
    
     
     li{
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     a{
       display: block;
-      font-size: 30px;
-      letter-spacing: 2px;
+      font-size: 20px;
+      letter-spacing: 4px;
 
       &:hover{}
 
@@ -193,7 +218,7 @@ li a.active, li.opened span.nolink{color: #fff;}
 
 .menu-toggle{
   @include transition;
-  position: absolute;
+  position: fixed;
   z-index: 800;
   top: 20px;
   right: 20px;
@@ -263,6 +288,10 @@ footer{
     margin-top: 0;
   }
   
+}
+
+#content{
+  min-height: 100vh;
 }
 
 #content-main{
