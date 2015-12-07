@@ -528,13 +528,13 @@ li a.active, li.opened span.nolink {
     width: 100%; }
   /* line 116, ../sass/style.scss */
   #logo a {
-    font-size: 50px !important;
+    font-size: 40px !important;
     line-height: normal;
     letter-spacing: 0; } }
 @media (max-height: 600px) {
   /* line 125, ../sass/style.scss */
   #logo a {
-    font-size: 100px !important;
+    font-size: 80px !important;
     line-height: normal;
     letter-spacing: 0; } }
 
